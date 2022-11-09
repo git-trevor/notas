@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row">
+        {{#each notas}}
+            <div class="col-md-3">
+                <div class="card text-dark lg-light border-success mb-3">
+                    <div class="card-header">
+                        <h4 class="card-title d-flex justify-content-between align-items-center">
+                            {{titulo}}
+                            <a href="/notes/edit:{{_id}}"><i class="fas fa-edit ms-2"></i></a>
+                            <a href="/notes/delete:{{_id}}"><i class="fas fa-trash ms-2"></i></a>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <p>{{descripcion}}</p>
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            <div class="card mx-auto">
+                <div class="card-body d-grid gap-2">
+                    <h1>Hola {{usuario.nombre}}</h1>
+                    <p class="lead">No hay notas en la base de datos</p>
+                    <a href="/notes/add" class="btn btn-success">Crear nueva nota</a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    <div class="row">
+        {{#if pages}}
+            <nav class="mx-auto">
+                <ul class="pagination">
+                    {{!-- PRIMERA PÁGINA --}}
+                    {{#equal current 1}}
+                        <li class="page-item disabled mr-1">
+                            <a href="#" class="page-link">Inicio</a>
+                        </li>
+                    {{else}}
+                        <li class="page-item mr-1">
+                            <a href="/notes/1" class="page-link">Inicio</a>
+                        </li>
+                    {{/equal}}
+
+                    {{!-- PÁGINAS INTERNAS --}}
+                    {{#for current pages}}
+                        {{{this}}}
+                    {{/for}}
+
+                    {{!-- ÚLTIMA PÁGINA --}}
+                    {{#equal current pages}}
+                        <li class="page-item disabled">
+                            <a href="#" class="page-link">Fin</a>
+                        </li>
+                    {{else}}
+                        <li class="page-item">
+                            <a href="/notes/{{pages}}" class="page-link">Fin</a>
+                        </li>
+                    {{/equal}}
+                </ul>
+            </nav>
+        {{/if}}
+    </div>
+</div>
