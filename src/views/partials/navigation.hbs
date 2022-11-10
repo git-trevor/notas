@@ -15,6 +15,19 @@
             {{/if}}
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 {{#if usuario}}
+                    {{#unless usuario.tipo}}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="navbarDropdownUsers"><i class="fas fa-users"></i><small> Usuarios</small></a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownUsers">
+                                <li>
+                                    <a class="dropdown-item" href="/users/users"><i class="fas fa-user-friends"></i> Listar Usuarios</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/users/singupadm"><i class="fas fa-user-plus"></i> Agregar Usuario</a>
+                                </li>
+                            </ul>
+                        </li>
+                    {{/unless}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-file-alt"></i><small> Notas</small></a>
                         <div class="dropdown-menu">

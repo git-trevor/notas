@@ -19,6 +19,10 @@ const UserSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    tipo: {
+        type: Number,
+        default: 1  // 0 es para usuario administrador; 1 es para usuario normal
     }
 });
 
